@@ -4,7 +4,24 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic'])
-
+.config(function($stateProvider,$urlRouterProvider){
+     $stateProvider
+     .state('home',{
+          url:'/home',
+          templateUrl:'template/home.html',
+          controller:'homeController'
+     })
+     .state('profile',{
+        url:'/profile',
+        templateUrl:'template/profile.html'
+     })
+     $urlRouterProvider.otherwise('/home');
+})
+.controller('homeController',function($scope,$location){
+    $scope.submit = function(){
+      $location.path('/profile');
+    }
+})
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
