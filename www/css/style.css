@@ -8,14 +8,14 @@ body{
 }
 .splash-image{
     border: 2px solid #fff;
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     padding: 10px 10px 0 10px;
 }
 .splash-container{
     border: 5px solid #F7F5F5;
-    left: 17%;
-    top: 30%;
+    left: 17vw;
+    top: 30vw;
     text-align: center;
     position: fixed;
 }
@@ -31,4 +31,11 @@ body{
     left:3%; 
     border-radius: 0;
     width: 94%; 
+}
+select,option{
+    font-weight: bold;
+    font-family: 'Patrick Hand', cursive !important;   
+}
+.title{
+    font-family: 'Patrick Hand', cursive !important;   
 }
