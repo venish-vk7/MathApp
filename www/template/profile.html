@@ -1,5 +1,25 @@
-<ion-content>
-        <div class="list list-inset">
-            <h3>this is a profile page</h3>
-        </div>  
-</ion-content>
+ <div class="profile">    
+     <div class="bar bar-header bar-stable">
+                <h1 class="title">Select one</h1>
+        </div>
+        <div class="has-header list list-inset">
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Enter digit Or Date</span>
+                <input type="number">
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                  Catagory
+                </div>
+                <select ng-model="catagory" ng-change="data()">
+                  <option selected>trivia</option>
+                  <option>math</option>
+                  <option>date</option>
+                  <option>year</option>
+                </select>
+              </label>
+              <button class="button button-block button-positive">
+                    Submit
+              </button>
+        </div> 
+    </div>

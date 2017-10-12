@@ -13,14 +13,32 @@ angular.module('starter', ['ionic'])
      })
      .state('profile',{
         url:'/profile',
-        templateUrl:'template/profile.html'
+        templateUrl:'template/profile.html',
+        controller:'profileController'
+     })
+     .state('/',{
+       url:'/view',
+       templateUrl:'template/view.html',
+       controller:'viewController'
      })
      $urlRouterProvider.otherwise('/home');
 })
-.controller('homeController',function($scope,$location){
-    $scope.submit = function(){
-      $location.path('/profile');
+.controller('homeController',function($scope,$location,$timeout){
+   $timeout(function(){
+        $location.path('/profile');
+   },2000)
+})
+.controller('profileController',function($scope,$http,$rootScope,$location){
+    $scope.data = function(){
+        $http.get('http://numbersapi.com/random/'+$scope.catagory)
+        .then(function(response){
+            $rootScope.data = response.data; 
+            $location.path('/view');
+        });
     }
+})
+.controller('viewController',function($scope,$rootScope){
+        $scope.factData = $rootScope.data;
 })
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
