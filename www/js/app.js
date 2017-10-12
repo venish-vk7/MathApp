@@ -18,9 +18,7 @@ angular.module('starter', ['ionic'])
      $urlRouterProvider.otherwise('/home');
 })
 .controller('homeController',function($scope,$location){
-    $scope.submit = function(){
-      $location.path('/profile');
-    }
+   
 })
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
