@@ -16,7 +16,7 @@ angular.module('starter', ['ionic'])
         templateUrl:'template/profile.html',
         controller:'profileController'
      })
-     .state('/',{
+     .state('view',{
        url:'/view',
        templateUrl:'template/view.html',
        controller:'viewController'
@@ -28,12 +28,36 @@ angular.module('starter', ['ionic'])
         $location.path('/profile');
    },2000)
 })
-.controller('profileController',function($scope,$http,$rootScope,$location){
+.controller('profileController',function($scope,$http,$rootScope,$location,$filter){
+    
     $scope.data = function(){
-        $http.get('http://numbersapi.com/random/'+$scope.catagory)
+      switch($scope.catagory){
+        case 'trivia' :
+                $scope.type="";
+                $scope.inputType="number";
+        break;
+        case 'math':
+                $scope.type="";
+                $scope.inputType="number";
+        break;
+        case 'date':
+                 $scope.inputType="text";
+                 $scope.type="";
+                 $scope.type = $filter('date')(new Date(),'MM/dd');
+        break;
+        case  'year':
+                $scope.type="";
+                $scope.inputType="text";
+                $scope.type = $filter('date')(new Date(),'yyyy');
+        break;
+      } 
+    }
+    $scope.sendData =  function(){
+        $http
+        .get("http://numbersapi.com/" + $scope.type+ "/"+$scope.catagory)
         .then(function(response){
-            $rootScope.data = response.data; 
-            $location.path('/view');
+          $rootScope.data=response.data;
+          $location.path("/view");
         });
     }
 })

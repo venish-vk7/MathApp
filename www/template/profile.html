@@ -3,10 +3,6 @@
                 <h1 class="title">Select one</h1>
         </div>
         <div class="has-header list list-inset">
-            <label class="item item-input item-stacked-label">
-                <span class="input-label">Enter digit Or Date</span>
-                <input type="number">
-            </label>
             <label class="item item-input item-select">
                 <div class="input-label">
                   Catagory
@@ -18,7 +14,11 @@
                   <option>year</option>
                 </select>
               </label>
-              <button class="button button-block button-positive">
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">digit/Date</span>
+                <input type="{{inputType}}"  ng-model="type">
+            </label>
+              <button class="button button-block button-positive" ng-click="sendData()">
                     Submit
               </button>
         </div> 
