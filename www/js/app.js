@@ -28,7 +28,7 @@ angular.module('starter', ['ionic'])
         $location.path('/profile');
    },2000)
 })
-.controller('profileController',function($scope,$http,$rootScope,$location,$filter){
+.controller('profileController',function($scope,$http,$rootScope,$location,$filter,$ionicLoading,$ionicPopup){
     
     $scope.data = function(){
       switch($scope.catagory){
@@ -53,11 +53,25 @@ angular.module('starter', ['ionic'])
       } 
     }
     $scope.sendData =  function(){
+        $ionicLoading.show({
+          content: 'Loading',
+          animation: 'fade-in',
+          showBackdrop: true,
+          maxWidth: 200,
+          showDelay: 0
+        });
         $http
         .get("http://numbersapi.com/" + $scope.type+ "/"+$scope.catagory)
         .then(function(response){
-          $rootScope.data=response.data;
-          $location.path("/view");
+            $rootScope.data=response.data;
+            $ionicLoading.hide();
+            $location.path("/view");
+        },function(err){
+          $ionicLoading.hide();
+          $ionicPopup.alert({
+            title: 'Alert',
+            template: 'Please Enter valid data' 
+          });
         });
     }
 })

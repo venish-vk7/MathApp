@@ -7,13 +7,12 @@ body{
     height:100%;
 }
 .splash-image{
-    border: 2px solid #fff;
-    width: 180px;
-    height: 180px;
+    width: 120px;
+    height: 120px;
     padding: 10px 10px 0 10px;
 }
 .splash-container{
-    border: 5px solid #F7F5F5;
+
     left: 17vw;
     top: 30vw;
     text-align: center;
