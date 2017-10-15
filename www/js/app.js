@@ -29,9 +29,9 @@ angular.module('starter', ['ionic'])
    },2000)
 })
 .controller('profileController',function($scope,$http,$rootScope,$location,$filter,$ionicLoading,$ionicPopup){
-    
-    $scope.data = function(){
-      switch($scope.catagory){
+    $scope.inputType="text";
+    $scope.$watch('catagory',function(newValue,oldValue){
+      switch(newValue){
         case 'trivia' :
                 $scope.type="";
                 $scope.inputType="number";
@@ -41,9 +41,9 @@ angular.module('starter', ['ionic'])
                 $scope.inputType="number";
         break;
         case 'date':
-                 $scope.inputType="text";
-                 $scope.type="";
-                 $scope.type = $filter('date')(new Date(),'MM/dd');
+                $scope.inputType="text";
+                //$scope.type="";
+                $scope.type = $filter('date')(new Date(),'MM/dd');
         break;
         case  'year':
                 $scope.type="";
@@ -51,7 +51,8 @@ angular.module('starter', ['ionic'])
                 $scope.type = $filter('date')(new Date(),'yyyy');
         break;
       } 
-    }
+    });
+    
     $scope.sendData =  function(){
         $ionicLoading.show({
           content: 'Loading',

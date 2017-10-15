@@ -7,14 +7,14 @@ body{
     height:100%;
 }
 .splash-image{
-    width: 120px;
-    height: 120px;
-    padding: 10px 10px 0 10px;
+    margin-top: 20vw;
+    width: 100px;
+    border: 1px solid transparent;
+    border-radius:100%;
 }
 .splash-container{
-
+    top: 20vw;
     left: 17vw;
-    top: 30vw;
     text-align: center;
     position: fixed;
 }
